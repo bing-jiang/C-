@@ -1,3 +1,8 @@
+//i=1没判断
+输入1+3i
+    2+2i
+输出(-4,8)
+    -4+8i//
 #include <iostream>   // std::cout
 #include <string>     // std::string, std::stod
 #include<complex>
