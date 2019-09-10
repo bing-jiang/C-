@@ -1,0 +1,53 @@
+#include <iostream>   // std::cout
+#include <string>     // std::string, std::stod
+#include<complex>
+#include<cmath>
+using namespace std;
+
+int main()
+{
+	string a,b;
+	cin>>a>>b;
+    int cnt_index=0,cnt_int=0,s1 =0,f1=0,s2=0,f2=0,count=0,count1=0;
+    //cnt_int 用于存放字符串中的数字.
+    //cnt_index 作为字符串b的下标.
+   
+    for(int i=0;a[i]!='+';++i) //当a数组元素不为结束符时.遍历字符串a.
+    {
+        if(a[i]>='0'&& a[i]<='9') //如果是数字.
+        {
+            s1*=10;
+            s1+=a[i]-'0';
+            count++;//数字字符的ascii-字符'0'的ascii码就等于该数字.
+        }
+    }
+    for(int i=count+1;a[i]!='i';++i){
+    	f1*=10;
+    	f1+=a[i]-'0';
+    	
+    }
+    
+    
+    for(int i=0;b[i]!='+';++i) //当a数组元素不为结束符时.遍历字符串a.
+    {
+        if(b[i]>='0'&& b[i]<='9') //如果是数字.
+        {
+            s2*=10;
+            s2+=b[i]-'0';
+            count1++;//数字字符的ascii-字符'0'的ascii码就等于该数字.
+        }
+    }
+    for(int i=count1+1;b[i]!='i';++i){
+    	f2*=10;
+    	f2+=b[i]-'0';
+    	
+    }   
+    complex<int>c1(s1,f1);
+    complex<int>c2(s2,f2);
+    cout<<c1*c2<<endl; //输出数字.(12345)
+    if(imag(c1*c2)>0)
+    	cout<<real(c1*c2)<<"+"<<imag(c1*c2)<<'i'<<endl;
+    else
+    	cout<<real(c1*c2)<<"-"<<imag(c1*c2)<<'i'<<endl;
+    return 0;
+}
