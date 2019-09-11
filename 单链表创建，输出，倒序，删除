@@ -1,0 +1,83 @@
+#include <iostream>
+#include <vector>
+#include <cstring>
+#include <assert.h>
+using namespace std;
+struct ListNode {
+    int m_key;
+    ListNode* next;
+};
+
+ListNode* createList1(int n)
+{
+    ListNode *p;
+    ListNode *head;
+    head = NULL;
+    for(int i=1; i<n; i++)
+    {
+        ListNode* pNewNode = new ListNode;
+        pNewNode->m_key = i;
+        if(head==NULL){
+        	head = pNewNode;
+        }
+        else{
+        	p->next = pNewNode;
+        }
+        p = pNewNode;
+    }
+        p->next = NULL;
+
+    return head;
+}
+void destoryList(ListNode* pHead)
+{
+    assert(pHead!=NULL);
+    ListNode* pNext = pHead->next;    
+    while(pNext != NULL)
+    {
+        delete pHead;
+        pHead = pNext;
+        pNext = pHead->next;
+    }
+    delete pHead;
+    pHead = NULL;    
+    return;
+}
+ 
+void print(ListNode* pHead)        //输出逆置后的单链表
+{
+	ListNode* p = pHead;
+	while (p)
+	{
+		cout<<p->m_key;
+		p = p->next;
+		cout << " ";
+	}
+	cout << endl;
+}
+
+    vector<int> printListFromTailToHead(ListNode* head) {
+        vector<int>value;
+        if(head!=NULL){
+            value.insert(value.begin(),head->m_key);
+            while(head->next!=NULL){
+                value.insert(value.begin(),head->next->m_key);
+                head = head->next;
+            }   
+        }
+        return value;
+    }
+ 
+int main() {
+	// your code goes here
+	vector<int>a;
+	ListNode* q;
+    q = createList1(10);
+	print(q);
+	a = printListFromTailToHead(q);
+	for(int i=0;i<10;i++){
+		cout<<a[i]<<endl;
+	}
+    destoryList(q);    
+ 
+	}
